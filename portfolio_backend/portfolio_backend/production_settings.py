@@ -3,6 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import secrets
 from datetime import timedelta
+import dj_database_url
 
 load_dotenv()
 
@@ -17,7 +18,10 @@ def generate_secret_key():
 SECRET_KEY = os.getenv('SECRET_KEY', generate_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+# Get the port number from the PORT environment variable
+PORT = int(os.getenv('PORT', 8000))
 
 ALLOWED_HOSTS = ['*']  # Update this with your Railway domain
 
@@ -48,6 +52,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Security Settings
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
 ROOT_URLCONF = 'portfolio_backend.production_urls'
 
 TEMPLATES = [
@@ -71,10 +82,11 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 # Password validation
@@ -127,7 +139,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 }
 
-# REST Framework settings - simplified for production
+# REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -135,10 +147,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ] if not DEBUG else [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
 }
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Logging Configuration
 LOGGING = {
