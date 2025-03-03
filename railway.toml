@@ -4,13 +4,10 @@ buildCommand = "python3 -m pip install -r requirements.txt"
 pythonVersion = "3.10"
 
 [deploy]
-startCommand = "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file - --timeout 120 --workers 1 --threads 2 --worker-class=gthread --worker-tmp-dir /dev/shm"
-healthcheckPath = "/health/"
+startCommand = "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file -"
+healthcheckPath = "/"
 healthcheckTimeout = 30
-restartPolicyType = "on-failure"
-restartPolicyMaxRetries = 3
 
 [envs]
 DJANGO_SETTINGS_MODULE = "portfolio_backend.production_settings"
-NIXPACKS_PYTHON_VERSION = "3.10"
-PYTHONUNBUFFERED = "1" 
+NIXPACKS_PYTHON_VERSION = "3.10" 
