@@ -1,1 +1,0 @@
-web: cd portfolio_backend && python manage.py migrate && python manage.py collectstatic --noinput && waitress-serve --port=8080 portfolio_backend.wsgi:application 
