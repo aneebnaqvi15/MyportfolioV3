@@ -4,12 +4,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd portfolio_backend && python manage.py runserver 0.0.0.0:$PORT"
+    "start": "cd portfolio_backend && python manage.py runserver 0.0.0.0:$PORT",
+    "build": "pip install -r requirements.txt",
+    "deploy": "cd portfolio_backend && python manage.py migrate --settings=portfolio_backend.production_settings && python manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && gunicorn portfolio_backend.wsgi:application"
   },
-  "keywords": [],
+  "engines": {
+    "node": ">=14.0.0",
+    "python": ">=3.9.0"
+  },
+  "keywords": ["python", "django", "portfolio"],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Django portfolio application",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2"

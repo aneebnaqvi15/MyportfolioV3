@@ -1,6 +1,7 @@
 [build]
 builder = "nixpacks"
 buildCommand = "pip install -r requirements.txt"
+pythonVersion = "3.9"
 
 [deploy]
 startCommand = "cd portfolio_backend && python manage.py migrate --settings=portfolio_backend.production_settings && python manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && gunicorn portfolio_backend.wsgi:application --log-file -"
@@ -10,4 +11,5 @@ restartPolicyType = "on-failure"
 restartPolicyMaxRetries = 10
 
 [envs]
-DJANGO_SETTINGS_MODULE = "portfolio_backend.production_settings" 
+DJANGO_SETTINGS_MODULE = "portfolio_backend.production_settings"
+NIXPACKS_PYTHON_VERSION = "3.9" 
