@@ -107,3 +107,6 @@ REST_FRAMEWORK = {
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True  # For development only
+
+# Add this line near the end of the file, before any other custom settings
+GITHUB_REPO_URL = 'https://github.com/aneebnaqvi15/MyportfolioV3'
