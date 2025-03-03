@@ -9,6 +9,8 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
+from django.views.generic import TemplateView
+from django.shortcuts import render
 
 @csrf_exempt
 def root(request):
@@ -18,10 +20,17 @@ def root(request):
         "status": "running"
     })
 
+def serve_portfolio(request):
+    return render(request, '../../pf/html/index.html')
+
 # URL patterns
 urlpatterns = [
-    path('', root, name='root'),
-    path('admin/', admin.site.urls),
+    # Serve portfolio as main page
+    path('', serve_portfolio, name='portfolio'),
+    
+    # API endpoints
+    path('api/', root, name='api-root'),
+    path('api/admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
@@ -31,3 +40,6 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Add static files serving for production
+urlpatterns += static('/', document_root='pf')
