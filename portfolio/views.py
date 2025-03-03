@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from .serializers import ProjectSerializer, SkillSerializer, CertificationSerializer
 from django.core.files.storage import default_storage
 from rest_framework.parsers import MultiPartParser, FormParser
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -27,9 +28,13 @@ def home(request):
 def project_list(request):
     if request.method == 'GET':
         projects = Project.get_all()
+        # Update GitHub URLs
+        for project in projects:
+            project['github'] = settings.GITHUB_REPO_URL
         return JsonResponse({"projects": projects})
     elif request.method == 'POST':
         data = json.loads(request.body)
+        data['github'] = settings.GITHUB_REPO_URL  # Set correct GitHub URL
         project = Project.create(data)
         return JsonResponse({"message": "Project created", "project": project})
 
@@ -85,14 +90,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
             projects = self.get_queryset()
             logger.info(f"Found {projects.count()} projects")
             
-            # Print each project for debugging
-            for project in projects:
-                logger.info(f"Project: {project.title}, Image: {project.image_url}")
-            
             serializer = self.get_serializer(projects, many=True)
+            data = serializer.data
+            
+            # Update GitHub URLs in response
+            for project in data:
+                project['github'] = settings.GITHUB_REPO_URL
+            
             return Response({
                 'status': 'success',
-                'data': serializer.data
+                'data': data
             })
         except Exception as e:
             logger.error(f"Error in list view: {str(e)}")
@@ -105,6 +112,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
         try:
             data = request.data.dict() if hasattr(request.data, 'dict') else request.data
             logger.info(f"Received project data: {data}")
+            
+            # Set correct GitHub URL
+            data['github'] = settings.GITHUB_REPO_URL
             
             if 'image_file' in request.FILES:
                 image_file = request.FILES['image_file']
