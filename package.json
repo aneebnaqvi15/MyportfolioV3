@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd portfolio_backend && python manage.py runserver 0.0.0.0:$PORT",
-    "build": "pip install -r requirements.txt",
-    "deploy": "cd portfolio_backend && python manage.py migrate --settings=portfolio_backend.production_settings && python manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && gunicorn portfolio_backend.wsgi:application"
+    "start": "cd portfolio_backend && python3 manage.py runserver 0.0.0.0:$PORT",
+    "build": "python3 -m pip install -r requirements.txt",
+    "deploy": "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application"
   },
   "engines": {
     "node": ">=14.0.0",

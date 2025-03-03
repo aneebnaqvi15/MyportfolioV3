@@ -1,1 +1,1 @@
-web: cd portfolio_backend && python manage.py migrate --settings=portfolio_backend.production_settings && python manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && gunicorn portfolio_backend.wsgi:application --log-file - 
+web: cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file - 

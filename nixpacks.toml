@@ -2,7 +2,7 @@
 aptPkgs = ["python3", "python3-pip", "python3-dev", "build-essential"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["python3 -m pip install -r requirements.txt"]
 
 [start]
-cmd = "cd portfolio_backend && python manage.py migrate --settings=portfolio_backend.production_settings && python manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && gunicorn portfolio_backend.wsgi:application --log-file -" 
+cmd = "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file -" 
