@@ -10,7 +10,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import os
 
 @csrf_exempt
@@ -18,17 +18,28 @@ def root(request):
     return JsonResponse({
         "message": "Portfolio API",
         "version": "1.0",
-        "status": "running"
+        "status": "running",
+        "github": settings.GITHUB_REPO_URL
     })
 
 def serve_static_file(request, path):
-    file_path = os.path.join(settings.PROJECT_ROOT, 'pf', path)
-    if os.path.exists(file_path):
-        return FileResponse(open(file_path, 'rb'))
-    return HttpResponse(status=404)
+    """Serve static files or redirect to GitHub Pages in production"""
+    if settings.DEBUG:
+        file_path = os.path.join(settings.PROJECT_ROOT, 'pf', path)
+        if os.path.exists(file_path):
+            return FileResponse(open(file_path, 'rb'))
+        return HttpResponse(status=404)
+    else:
+        # In production, redirect to GitHub Pages
+        return redirect(f"{settings.GITHUB_PAGES_URL}/{path}")
 
 def serve_portfolio(request):
-    return render(request, 'index.html')
+    """Serve portfolio or redirect to GitHub Pages in production"""
+    if settings.DEBUG:
+        return render(request, 'index.html')
+    else:
+        # In production, redirect to GitHub Pages
+        return redirect(settings.GITHUB_PAGES_URL)
 
 # URL patterns
 urlpatterns = [

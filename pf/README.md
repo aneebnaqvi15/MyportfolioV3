@@ -200,13 +200,10 @@ A modern, responsive portfolio website built with HTML, CSS, and JavaScript. Fea
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-For support, email your-email@example.com or create an issue in the repository.
+For support, email syedaneebajk00786@.com or create an issue in the repository.
 
 ## 🙏 Acknowledgments
 
