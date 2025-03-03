@@ -4,9 +4,9 @@ buildCommand = "python3 -m pip install -r requirements.txt"
 pythonVersion = "3.10"
 
 [deploy]
-startCommand = "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file -"
+startCommand = "cd portfolio_backend && python3 manage.py migrate --settings=portfolio_backend.production_settings && python3 manage.py collectstatic --noinput --settings=portfolio_backend.production_settings && python3 -m gunicorn portfolio_backend.wsgi:application --log-file - --timeout 120 --workers 2"
 healthcheckPath = "/health/"
-healthcheckTimeout = 100
+healthcheckTimeout = 60
 
 [envs]
 DJANGO_SETTINGS_MODULE = "portfolio_backend.production_settings"

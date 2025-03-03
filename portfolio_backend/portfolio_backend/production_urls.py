@@ -10,30 +10,57 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 import logging
+import sys
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
 
 logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def health_check(request):
+    logger.info(f"Health check accessed. Path: {request.path}, Method: {request.method}")
     try:
         # Try to make a simple database query to verify DB connection
         from django.contrib.auth.models import User
         User.objects.first()
+        logger.info("Database connection successful")
         
         # Check if SECRET_KEY is set
         if not settings.SECRET_KEY:
             raise Exception("SECRET_KEY is not set")
-            
-        return JsonResponse({
+        logger.info("SECRET_KEY is configured")
+        
+        # Check static files configuration
+        if not settings.STATIC_ROOT:
+            raise Exception("STATIC_ROOT is not set")
+        logger.info("Static files configuration is valid")
+        
+        # Check if we're using the correct settings module
+        if settings.DEBUG:
+            logger.warning("Application is running in DEBUG mode")
+        
+        response_data = {
             "status": "healthy",
             "database": "connected",
-            "secret_key": "configured"
-        }, status=200)
+            "secret_key": "configured",
+            "static_files": "configured",
+            "debug_mode": settings.DEBUG,
+            "allowed_hosts": settings.ALLOWED_HOSTS
+        }
+        logger.info("Health check passed successfully")
+        return JsonResponse(response_data, status=200)
+        
     except Exception as e:
-        logger.error(f"Health check failed: {str(e)}")
+        error_message = str(e)
+        logger.error(f"Health check failed: {error_message}")
         return JsonResponse({
             "status": "unhealthy",
-            "error": str(e),
+            "error": error_message,
             "type": type(e).__name__
         }, status=500)
 
