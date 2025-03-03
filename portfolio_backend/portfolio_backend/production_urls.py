@@ -9,6 +9,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
     TokenVerifyView,
 )
+import logging
+
+logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def health_check(request):
@@ -27,6 +30,7 @@ def health_check(request):
             "secret_key": "configured"
         }, status=200)
     except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
         return JsonResponse({
             "status": "unhealthy",
             "error": str(e),
@@ -35,17 +39,28 @@ def health_check(request):
 
 @csrf_exempt
 def root(request):
+    logger.info(f"Root path accessed. Path: {request.path}, Method: {request.method}")
     return JsonResponse({
         "message": "Portfolio API",
         "version": "1.0",
-        "status": "running"
+        "status": "running",
+        "endpoints": {
+            "admin": "/admin/",
+            "health": "/health/",
+            "api_token": "/api/token/",
+            "api_token_refresh": "/api/token/refresh/",
+            "api_token_verify": "/api/token/verify/"
+        }
     }, status=200)
 
 # Simplified URL patterns for production
 urlpatterns = [
+    # Root path handler
     path('', root, name='root'),
-    path('admin/', admin.site.urls),
     path('health/', health_check, name='health_check'),
+    
+    # Admin and authentication
+    path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
@@ -54,4 +69,17 @@ urlpatterns = [
 # Add static and media URL patterns if in debug mode
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Add a catch-all pattern for debugging
+if settings.DEBUG:
+    def debug_404(request):
+        logger.warning(f"404 for path: {request.path}, Method: {request.method}")
+        return JsonResponse({
+            "error": "Not Found",
+            "path": request.path,
+            "method": request.method,
+            "available_paths": [str(pattern.pattern) for pattern in urlpatterns]
+        }, status=404)
+    
+    urlpatterns.append(path('<path:path>', debug_404)) 
