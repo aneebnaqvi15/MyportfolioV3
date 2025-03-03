@@ -1,0 +1,152 @@
+/* Circular Progress */
+.circular-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.circle-wrap {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.circle .mask,
+.circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
+.circle .mask.full,
+.circle .fill {
+    animation: fill-animation 3s infinite;
+    transform: rotate(0deg);
+}
+
+.inside-circle {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 100;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.percent {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.rotating-dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotate-dots 10s linear infinite;
+}
+
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+@keyframes fill-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-dots {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .circle-wrap {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .circle .mask,
+    .circle .fill {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .inside-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .percent {
+        font-size: 1.2rem;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-wrap {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .circle .mask,
+    .circle .fill {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .inside-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .percent {
+        font-size: 1rem;
+    }
+    
+    .dot {
+        width: 4px;
+        height: 4px;
+    }
+}

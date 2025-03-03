@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Developer Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/projects.css">
+    <link rel="stylesheet" href="../css/progress.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/education.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-wrapper">
+                    <span class="logo-text">Portfolio</span>
+                    <span class="logo-separator">|</span>
+                    <span class="logo-name">Aneeb</span>
+                    <div class="logo-dot"></div>
+                </div>
+                <span class="premium-logo-badge">
+                    <i class="fas fa-code"></i>
+                </span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-house-user"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span>About</span>
+                </a>
+                <a href="#education" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </a>
+                <a href="#skills" class="nav-link">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="nav-link">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+
+           
+            <button class="nav-toggle">
+                <span class="premium-badge">PRO</span>
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="title-wrapper">
+                        <span class="pre-title">👋 Hi, I'm</span>
+                        <h1 class="hero-title">Syed Aneeb</h1>
+                        <p class="hero-role">Software Developer & ML Engineer</p>
+                    </div>
+                    <p class="hero-subtitle">Transforming Ideas into Intelligent Solutions</p>
+                    
+                    <div class="tech-stack">
+                        <div class="tech-icon" data-tooltip="HTML5">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-html5" style="color: #e34f26;"></i>
+                            </div>
+                            <span class="icon-name">HTML5</span>
+                        </div>
+                        <div class="tech-icon" data-tooltip="CSS3">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-css3-alt" style="color: #2965f1;"></i>
+                            </div>
+                            <span class="icon-name">CSS3</span>
+                        </div>
+                        <div class="tech-icon" data-tooltip="JavaScript">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-js" style="color: #f7df1e;"></i>
+                            </div>
+                            <span class="icon-name">JavaScript</span>
+                        </div>
+                        <div class="tech-icon" data-tooltip="React">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-react" style="color: #61dafb;"></i>
+                            </div>
+                            <span class="icon-name">React</span>
+                        </div>
+                        <div class="tech-icon" data-tooltip="Node.js">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-node" style="color: #339933;"></i>
+                            </div>
+                            <span class="icon-name">Node.js</span>
+                        </div>
+                        <div class="tech-icon" data-tooltip="Python">
+                            <div class="icon-wrapper">
+                                <i class="fab fa-python" style="color: #3776ab;"></i>
+                            </div>
+                            <span class="icon-name">Python</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#projects" class="primary-btn">
+                            <span>View Projects</span>
+                            <i class="fas fa-rocket"></i>
+                        </a>
+                        <a href="#contact" class="secondary-btn">
+                            <span>Let's Talk</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <div class="hero-image">
+                        <div class="image-wrapper">
+                            <img src="../images/profile-pic.png" alt="Developer Profile">
+                        </div>
+                        <div class="experience-badge">
+                            <span>4+</span>
+                            <p>Years<br>Experience</p>
+                        </div>
+                    </div>
+                    <div class="image-shape"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="section-title">About Me</h2>
+                
+                <!-- Personal Info Card -->
+                <div class="personal-info-card">
+                    <div class="info-header">
+                        <div class="avatar-wrapper">
+                            <img src="../images/profile-pic.png" alt="Profile Picture" class="avatar">
+                            <div class="status-badge">
+                                <span>Available for Work</span>
+                            </div>
+                        </div>
+                        <div class="header-text">
+                            <h3>Syed Aneeb</h3>
+                            <p class="role">Full Stack Developer & ML Engineer</p>
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Islamabad, Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bio-text">
+                        <p>A passionate full-stack developer with expertise in modern JavaScript frameworks,Cloud technologies and ML/DL. I combine technical skills with creative problem-solving to build scalable and innovative solutions that make a difference.</p>
+                        <div class="key-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-code"></i>
+                                <span>Clean Code Enthusiast</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Problem Solver</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users"></i>
+                                <span>Team Player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Stats -->
+                <div class="experience-stats">
+                    <div class="stats-grid">
+                        <div class="stat-card" data-aos="fade-up">
+                            <div class="stat-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" data-target="15">0</div>
+                                <h4>Projects Completed</h4>
+                                <p>Delivering Excellence</p>
+                            </div>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" data-target="10">0</div>
+                                <h4>Happy Clients</h4>
+                                <p>Trust & Satisfaction</p>
+                            </div>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" data-target="4">0</div>
+                                <h4>Years Experience</h4>
+                                <p>Professional Growth</p>
+                            </div>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number" data-target="3">0</div>
+                                <h4>Awards Won</h4>
+                                <p>Recognition</p>
+                            </div>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Competencies -->
+                <div class="core-competencies">
+                    <h3>Core Competencies</h3>
+                    <div class="competencies-grid">
+                        <div class="competency-card" data-aos="zoom-in">
+                            <div class="competency-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Web Development</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+
+                        <div class="competency-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="competency-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4>Backend Development</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+
+                        <div class="competency-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="competency-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Mobile Development</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="65"></div>
+                            </div>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+
+                        <div class="competency-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="competency-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>Machine Learning</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="60"></div>
+                            </div>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="education-wrapper">
+                <!-- Academic Education -->
+                <div class="education-group">
+                    <h3 class="group-title">Academic Background</h3>
+                    <div class="education-cards">
+                        <div class="education-card" data-aos="fade-up">
+                            <div class="card-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="header-content">
+                                    <h4>Bachelor of Computer Science</h4>
+                                    <p class="institution">Mirpur University of Science & Technology ,MUST</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="duration"><i class="far fa-calendar-alt"></i> 2020 - 2024</p>
+                                <p class="grade"><i class="fas fa-star"></i> CGPA: 3/4.0</p>
+                                <ul class="highlights">
+                                    <li>Key contributions in different societies of University</li>
+                                    <li>Dean's List for Academic Excellence</li>
+                                    <li>Lead Developer in Final Year Project</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="education-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card-header">
+                                <i class="fas fa-school"></i>
+                                <div class="header-content">
+                                    <h4>Intermediate in Computer Science</h4>
+                                    <p class="institution">Ajk Science College Mirpur,AK</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="duration"><i class="far fa-calendar-alt"></i> 2018 - 2020</p>
+                                <p class="grade"><i class="fas fa-star"></i> Grade: A</p>
+                                <ul class="highlights">
+                                    <li>Student of the Year</li>
+                                    <li>President of Debating Society</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="education-group">
+                    <h3 class="group-title">Professional Certifications</h3>
+                    <div class="certifications-wrapper">
+                        <div class="certifications-grid">
+                            <!-- Machine Learning Certification -->
+                            <div class="certification-card" data-aos="fade-up" data-certificate-url="../images/ML.jpg">
+                                <div class="cert-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>Machine Learning Specialization</h4>
+                                    <p class="issuer">FAST University Islamabad</p>
+                                    <ul class="cert-details">
+                                        <li>Deep Learning & Neural Networks</li>
+                                        <li>Data Analysis with Python</li>
+                                        <li>Practical ML Projects</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">Nov24-March25</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- React Development -->
+                            <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="cert-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>React Development</h4>
+                                    <p class="issuer">KG Coding</p>
+                                    <ul class="cert-details">
+                                        <li>Modern React with Hooks</li>
+                                        <li>State Management</li>
+                                        <li>React Best Practices</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">Dec 2023</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Backend Development Internship -->
+                            <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+                                <div class="cert-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>Backend Development Internship</h4>
+                                    <p class="issuer">Code Alpha</p>
+                                    <ul class="cert-details">
+                                        <li>API Development</li>
+                                        <li>Database Management</li>
+                                        <li>Server-side Architecture</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">Nov 2023</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Flutter App Development -->
+                            <div class="certification-card" data-aos="fade-up" data-aos-delay="300">
+                                <div class="cert-icon">
+                                    <svg class="flutter-icon" viewBox="0 0 256 317" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                                        <defs>
+                                            <linearGradient x1="3.952%" y1="26.993%" x2="75.897%" y2="52.919%" id="flutter-grad">
+                                                <stop offset="0%" style="stop-color:#54C5F8"/>
+                                                <stop offset="100%" style="stop-color:#0468D7"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M157.666 0L0 157.667l48.8 48.8L255.268.001 157.666 0zM156.567 145.397L72.15 229.815l48.984 49.716 48.71-48.71 85.425-85.424-48.702-48.702z" fill="url(#flutter-grad)"/>
+                                    </svg>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>Flutter App Development</h4>
+                                    <p class="issuer">Udemy</p>
+                                    <ul class="cert-details">
+                                        <li>Cross-platform Development</li>
+                                        <li>State Management with Provider</li>
+                                        <li>UI/UX Best Practices</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">Jan 2024</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cyber Security Workshop -->
+                            <div class="certification-card" data-aos="fade-up" data-certificate-url="../images/cyber.jpg">
+                                <div class="cert-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>Cyber Security Workshop</h4>
+                                    <p class="issuer">Ignite Pakistan</p>
+                                    <ul class="cert-details">
+                                        <li>Network Security</li>
+                                        <li>Ethical Hacking</li>
+                                        <li>Security Best Practices</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">4-6 Oct 2024</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Web Development Internship -->
+                            <div class="certification-card" data-aos="fade-up" data-certificate-url="../images/web.jpg">
+                                <div class="cert-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>Web Development Internship</h4>
+                                    <p class="issuer">Moboroid Software House</p>
+                                    <ul class="cert-details">
+                                        <li>Django Backend Development</li>
+                                        <li>Full-Stack Development</li>
+                                        <li>3 Months Professional Experience</li>
+                                    </ul>
+                                    <div class="cert-footer">
+                                        <span class="date">3 Months Duration</span>
+                                        <a href="javascript:void(0)" class="view-cert">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <p>Technologies I work with</p>
+            </div>
+
+            <div class="skills-container">
+                <!-- Frontend Development -->
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="HTML5">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                        </div>
+                        <div class="skill-item" data-tooltip="CSS3">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                        </div>
+                        <div class="skill-item" data-tooltip="JavaScript">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        </div>
+                        <div class="skill-item" data-tooltip="React">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Development -->
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="Node.js">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                        </div>
+                        <div class="skill-item" data-tooltip="Python">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        </div>
+                        <div class="skill-item" data-tooltip="Django">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
+                        </div>
+                        <div class="skill-item" data-tooltip="SQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                        </div>
+                        <div class="skill-item" data-tooltip="Firebase">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming Languages -->
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="C++">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                        </div>
+                        <div class="skill-item" data-tooltip="Python">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile & Design -->
+                <div class="skill-category">
+                    <h3>Mobile & Design</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="Android">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android">
+                        </div>
+                        <div class="skill-item" data-tooltip="Figma">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="TensorFlow">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                        </div>
+                        <div class="skill-item" data-tooltip="Scikit-learn">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
+                        </div>
+                        <div class="skill-item" data-tooltip="Pandas">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                        </div>
+                        <div class="skill-item" data-tooltip="NumPy">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Services -->
+                <div class="skill-category">
+                    <h3>Cloud Services</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="AWS">
+                            <img src="https://skillicons.dev/icons?i=aws" alt="AWS">
+                        </div>
+                        <div class="skill-item" data-tooltip="Google Cloud">
+                            <img src="https://skillicons.dev/icons?i=gcp" alt="Google Cloud">
+                        </div>
+                        <div class="skill-item" data-tooltip="Microsoft Azure">
+                            <img src="https://skillicons.dev/icons?i=azure" alt="Microsoft Azure">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Skills -->
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-tooltip="Git">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                        </div>
+                        <div class="skill-item" data-tooltip="Docker">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                        </div>
+                        <div class="skill-item" data-tooltip="Linux">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+            </div>
+            
+            <div class="projects-wrapper" id="projectsContainer">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+
+            <div class="projects-nav">
+                <button class="nav-btn prev-btn" aria-label="Previous project" >
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next-btn" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to drop a message!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="item-content">
+                                <h4>Email</h4>
+                                <a href="mailto:your.email@example.com">syedaneebajk00786@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="item-content">
+                                <h4>Location</h4>
+                                <p>Islamabad, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="item-content">
+                                <h4>Phone</h4>
+                                <a href="tel:+1234567890">+92 (355) 6606136</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/syedaneeb15/" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/aneebnaqvi15" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="from_name" id="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="user_email" id="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 syedaneeb75@. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast-container"></div>
+
+    <!-- Initialize EmailJS -->
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("1BZnTnYiEcZkbcwNF");
+        })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            // Add hidden fields for additional parameters
+            const formData = new FormData(this);
+            formData.append('to_name', 'syed aneeb');
+            formData.append('reply_to', document.getElementById('email').value);
+
+            emailjs.sendForm('service_dj42txp', 'template_9l48m3k', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showToast('Message sent successfully! I will get back to you soon.', 'success');
+                    document.getElementById('contactForm').reset();
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    showToast('Failed to send message. Please try again later.', 'warning');
+                })
+                .finally(function() {
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
+
+    <!-- Custom JS -->
+    <script>
+        // Toast Notification Function
+        function showToast(message, type = 'info') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            
+            let icon;
+            switch(type) {
+                case 'info':
+                    icon = 'info-circle';
+                    break;
+                case 'warning':
+                    icon = 'exclamation-circle';
+                    break;
+                case 'success':
+                    icon = 'check-circle';
+                    break;
+                default:
+                    icon = 'info-circle';
+            }
+
+            toast.innerHTML = `
+                <i class="fas fa-${icon}"></i>
+                <span class="message">${message}</span>
+                <span class="close-btn">
+                    <i class="fas fa-times"></i>
+                </span>
+            `;
+
+            toastContainer.appendChild(toast);
+            
+            // Show toast with animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            // Add click event to close button
+            const closeBtn = toast.querySelector('.close-btn');
+            closeBtn.addEventListener('click', () => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            });
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                }
+            }, 5000);
+        }
+
+        // Function to show certificate modal
+        function showCertificateModal(imageUrl) {
+            const modal = document.createElement('div');
+            modal.className = 'certificate-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-controls">
+                        <button class="zoom-in-btn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+                        <button class="zoom-out-btn" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+                        <button class="reset-zoom-btn" title="Reset Zoom"><i class="fas fa-undo"></i></button>
+                        <button class="close-modal" title="Close">&times;</button>
+                    </div>
+                    <div class="image-container">
+                        <img src="${imageUrl}" alt="Certificate" class="certificate-image">
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const img = modal.querySelector('.certificate-image');
+            const container = modal.querySelector('.image-container');
+            let scale = 1;
+            let posX = 0;
+            let posY = 0;
+
+            // Wait for image to load to get its natural dimensions
+            img.onload = () => {
+                const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+                const containerWidth = container.clientWidth;
+                const containerHeight = container.clientHeight;
+                const containerAspectRatio = containerWidth / containerHeight;
+
+                if (imgAspectRatio > containerAspectRatio) {
+                    img.style.width = '100%';
+                    img.style.height = 'auto';
+                } else {
+                    img.style.width = 'auto';
+                    img.style.height = '100%';
+                }
+            };
+
+            // Zoom functions
+            function updateTransform() {
+                img.style.transform = `scale(${scale}) translate(${posX}px, ${posY}px)`;
+            }
+
+            function zoomIn() {
+                if (scale < 3) {
+                    scale *= 1.2;
+                    updateTransform();
+                }
+            }
+
+            function zoomOut() {
+                if (scale > 0.5) {
+                    scale /= 1.2;
+                    if (scale < 1) {
+                        scale = 1;
+                        posX = 0;
+                        posY = 0;
+                    }
+                    updateTransform();
+                }
+            }
+
+            function resetZoom() {
+                scale = 1;
+                posX = 0;
+                posY = 0;
+                updateTransform();
+            }
+
+            // Event listeners
+            modal.querySelector('.zoom-in-btn').addEventListener('click', zoomIn);
+            modal.querySelector('.zoom-out-btn').addEventListener('click', zoomOut);
+            modal.querySelector('.reset-zoom-btn').addEventListener('click', resetZoom);
+            modal.querySelector('.close-modal').addEventListener('click', () => modal.remove());
+
+            // Mouse wheel zoom
+            modal.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = img.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                if (e.deltaY < 0) zoomIn();
+                else zoomOut();
+            });
+
+            // Pan functionality
+            let isDragging = false;
+            let startX, startY;
+
+            container.addEventListener('mousedown', (e) => {
+                if (scale > 1) {
+                    isDragging = true;
+                    startX = e.clientX - posX;
+                    startY = e.clientY - posY;
+                    container.style.cursor = 'grabbing';
+                }
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging && scale > 1) {
+                    posX = e.clientX - startX;
+                    posY = e.clientY - startY;
+                    updateTransform();
+                }
+            });
+
+            container.addEventListener('mouseup', () => {
+                isDragging = false;
+                container.style.cursor = 'grab';
+            });
+
+            container.addEventListener('mouseleave', () => {
+                isDragging = false;
+                container.style.cursor = 'grab';
+            });
+
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+
+        // Add click event listeners to certification view buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const certButtons = document.querySelectorAll('.view-cert');
+            
+            certButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const certCard = button.closest('.certification-card');
+                    const certificateUrl = certCard.getAttribute('data-certificate-url');
+                    console.log('Certificate URL:', certificateUrl);
+                    
+                    if (certificateUrl) {
+                        showCertificateModal(certificateUrl);
+                    } else {
+                        showToast('Certificate will be available soon. Please check back later!', 'warning');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        const BASE_URL = 'http://127.0.0.1:8000';  // Update this for production
+    </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/counter.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/certifications.js"></script>
+    <script src="../js/about.js"></script>
+</body>
+</html>

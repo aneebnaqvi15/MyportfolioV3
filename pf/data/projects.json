@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Portfolio Website",
+        "description": "A modern portfolio website built with HTML, CSS, and JavaScript.",
+        "image_url": "../images/project1.jpg",
+        "github": "https://github.com/aneebnaqvi15/portfolio",
+        "technologies": "HTML, CSS, JavaScript, GSAP"
+    },
+    {
+        "title": "Project 2",
+        "description": "Your project 2 description",
+        "image_url": "../images/project2.jpg",
+        "github": "https://github.com/yourusername/project2",
+        "technologies": "React, Node.js, MongoDB"
+    }
+] 
