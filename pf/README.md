@@ -212,3 +212,4 @@ For support, email syedaneebajk00786@.com or create an issue in the repository.
 - EmailJS for email service
 - Unsplash for stock images
 - Google Fonts for typography
+- 
