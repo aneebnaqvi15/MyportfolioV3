@@ -10,11 +10,31 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 from django.views.generic import TemplateView
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 import os
+import mimetypes
 
+def serve_static_file(request, path):
+    """Serve static files directly"""
+    file_path = os.path.join(settings.PROJECT_ROOT, 'pf', path)
+    if os.path.exists(file_path):
+        content_type, _ = mimetypes.guess_type(file_path)
+        response = FileResponse(open(file_path, 'rb'))
+        if content_type:
+            response['Content-Type'] = content_type
+        return response
+    return HttpResponse(status=404)
+
+def serve_portfolio(request):
+    """Serve the portfolio's index.html file"""
+    file_path = os.path.join(settings.PROJECT_ROOT, 'pf', 'html', 'index.html')
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), content_type='text/html')
+    return HttpResponse(status=404)
+
+# API endpoints
 @csrf_exempt
-def root(request):
+def api_root(request):
     return JsonResponse({
         "message": "Portfolio API",
         "version": "1.0",
@@ -22,42 +42,24 @@ def root(request):
         "github": settings.GITHUB_REPO_URL
     })
 
-def serve_static_file(request, path):
-    """Serve static files or redirect to GitHub Pages in production"""
-    if settings.DEBUG:
-        file_path = os.path.join(settings.PROJECT_ROOT, 'pf', path)
-        if os.path.exists(file_path):
-            return FileResponse(open(file_path, 'rb'))
-        return HttpResponse(status=404)
-    else:
-        # In production, redirect to GitHub Pages
-        return redirect(f"{settings.GITHUB_PAGES_URL}/{path}")
-
-def serve_portfolio(request):
-    """Serve portfolio or redirect to GitHub Pages in production"""
-    if settings.DEBUG:
-        return render(request, 'index.html')
-    else:
-        # In production, redirect to GitHub Pages
-        return redirect(settings.GITHUB_PAGES_URL)
-
 # URL patterns
 urlpatterns = [
+    # Serve portfolio files
+    re_path(r'^(?P<path>js/.*|css/.*|images/.*|data/.*)$', serve_static_file),
+    
     # API endpoints under /api/
-    path('api/', root, name='api-root'),
+    path('api/', api_root, name='api-root'),
     path('api/admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     
-    # Serve portfolio files
-    re_path(r'^(?P<path>js/.*|css/.*|images/.*|data/.*|html/.*)$', serve_static_file),
-    
-    # Serve index.html for the root path
-    path('', serve_portfolio, name='portfolio'),
+    # Serve index.html for all other paths
+    re_path(r'^.*$', serve_portfolio, name='portfolio'),
 ]
 
-# Add static and media file handling
+# Add static and media file handling for development
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns = [
+        path('', serve_portfolio, name='portfolio'),
+    ] + urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

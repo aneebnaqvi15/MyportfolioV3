@@ -11,8 +11,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
-# GitHub Pages configuration
-GITHUB_PAGES_URL = 'https://aneebnaqvi15.github.io/MyportfolioV3'
+# GitHub configuration
 GITHUB_REPO_URL = 'https://github.com/aneebnaqvi15/MyportfolioV3'
 
 # Generate a secure random key if SECRET_KEY is not set
@@ -73,8 +72,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.static',
-                # Add custom context processor for GitHub Pages
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -92,7 +89,7 @@ DATABASES = {
 }
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = f'{GITHUB_PAGES_URL}/static/' if not DEBUG else '/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional static file directories
@@ -106,7 +103,7 @@ WHITENOISE_ROOT = os.path.join(PROJECT_ROOT, 'pf')
 WHITENOISE_INDEX_FILE = True
 
 # Media files
-MEDIA_URL = f'{GITHUB_PAGES_URL}/media/' if not DEBUG else '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
@@ -116,7 +113,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    GITHUB_PAGES_URL,
     "http://localhost:8000",
     "https://web-production-99de.up.railway.app",
 ]
@@ -156,7 +152,6 @@ SIMPLE_JWT = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
